@@ -10,15 +10,24 @@
 INCL=-I/home/w/Mycode/My_leetcode/incl
 BIN =/home/w/Mycode/My_leetcode/bin
 OBJ1=pivotsum.o
+OBJ1=megersort.o
 CC  =gcc
 
 .SUFFIXES: .c
 .c.o:
 	$(CC) ${INCL} -c $<
 
-all: 5_18_pivotsum
+all: 5_18_pivotsum 5_21_recursion
 #C编译
 pivotsum:$(OBJ1)
+	echo ""
+	echo "======开始编译======"
+	$(CC) -o  $@ $?
+	mv   $@  ${BIN}
+	rm   -f  ${OBJ1}
+	echo "======编译结束======"
+	echo ""
+megersort:$(OBJ2)
 	echo ""
 	echo "======开始编译======"
 	$(CC) -o  $@ $?
