@@ -11,9 +11,10 @@
 */
 
 #include<stdio.h>
-
+#include<cs50.h>
 int main (void)
 {
- 
- return 0;
+ char c = get_char("Prompt: ");
+ printf("c = %c\n",c);
+ return 1;
 }
