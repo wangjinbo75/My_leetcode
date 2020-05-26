@@ -18,6 +18,12 @@ OBJ0=$(file0).o
 file3=5_23_dominantIndex
 OBJ3=$(file3).o
 
+file4=plusone_5_23
+OBJ4=$(file4).o
+
+file5=addBinary_5_26
+OBJ5=$(file5).o
+
 OBJ1=pivotsum.o
 OBJ2=megersort.o
 
@@ -27,12 +33,17 @@ OBJ2=megersort.o
 	$(CC) -c   $<   
 #-------------------------
 .PHONY : all
-all: clean  $(file0) $(file3) 5_21_recursion 
+all:  $(file0) $(file3) $(file4)  $(file5) clean 5_21_recursion 
 #C编译
+$(file5):$(OBJ5)  
+	$(CC) -o  $@  $? $(LIB) 
+$(file4):$(OBJ4)  
+	$(CC) -o  $@  $? $(LIB) 
 $(file3):$(OBJ3)  
 	$(CC) -o  $@  $? $(LIB) 
 $(file0):$(OBJ0)  
 	$(CC) -o  $@  $? $(LIB) 
+
 pivotsum:$(OBJ1)
 	echo ""
 	echo "======开始编译======"
@@ -47,5 +58,3 @@ megersort:$(OBJ2)
 .PHONY: clean
 clean:
 	rm -f *.o $(file0)
-  
-

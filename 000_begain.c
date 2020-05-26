@@ -11,10 +11,22 @@
 */
 
 #include<stdio.h>
+#include<stdlib.h>
 #include<cs50.h>
 int main (void)
 {
- char c = get_char("Prompt: ");
- printf("c = %c\n",c);
- return 1;
+		int NumsSize = get_int("NumsSize: ");
+		int Nums[NumsSize];
+		for(int i= 0;i<NumsSize;i++)
+		{
+				int a = get_int("Nums: ");
+				Nums[i]=a;
+		}
+		for(int i= 0;i<NumsSize;i++)
+		{
+				printf(" %d ",Nums[i]); 
+		} 
+		printf("\n");
+
+		return 0;
 }
