@@ -52,11 +52,11 @@ int main (void)
 				printf(" %d ",Nums[i]); 
 		} 
 		printf("\n");
-		int returnSize[3];
+		int *returnSize;
 		int *reSize;
         reSize =  plusone(Nums,NumsSize,returnSize);
-		printf("reSize sizeof is %ld \n",sizeof(reSize)/sizeof(int) ); 
-		for(int i = 0;i<sizeof(reSize)/sizeof(int) ;i++)
+		printf("reSize sizeof is %d \n", returnSize[0] ); 
+		for(int i = 0;i<returnSize[0] ;i++)
 		{
 				printf(" %d ",reSize[i]); 
 		} 

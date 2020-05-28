@@ -12,7 +12,13 @@ INCL=-I/home/w/Mycode/My_leetcode/incl
 BIN =/home/w/Mycode/My_leetcode/bin
 LIB =-L/usr/local/lib -lcs50
 
-file0=000_begain
+file7=longestCommonPrefix
+OBJ7=$(file7).o
+
+file6=strStr_5_26
+OBJ6=$(file6).o
+
+file0=findDiagonalOrder
 OBJ0=$(file0).o
 
 file3=5_23_dominantIndex
@@ -33,8 +39,12 @@ OBJ2=megersort.o
 	$(CC) -c   $<   
 #-------------------------
 .PHONY : all
-all:  $(file0) $(file3) $(file4)  $(file5) clean 5_21_recursion 
+all:  $(file0) $(file3) $(file4)  $(file5) $(file6) $(file7) clean 5_21_recursion 
 #C编译
+$(file7):$(OBJ7)  
+	$(CC) -o  $@  $? $(LIB) 
+$(file6):$(OBJ6)  
+	$(CC) -o  $@  $? $(LIB) 
 $(file5):$(OBJ5)  
 	$(CC) -o  $@  $? $(LIB) 
 $(file4):$(OBJ4)  
@@ -57,4 +67,4 @@ megersort:$(OBJ2)
 
 .PHONY: clean
 clean:
-	rm -f *.o $(file0)
+	rm -f *.o 
