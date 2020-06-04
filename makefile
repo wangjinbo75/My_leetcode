@@ -21,7 +21,7 @@ OBJ6=$(file6).o
 file0=findDiagonalOrder
 OBJ0=$(file0).o
 
-file3=5_23_dominantIndex
+file3=reverseString
 OBJ3=$(file3).o
 
 file4=plusone_5_23
