@@ -27,7 +27,7 @@ OBJ3=$(file3).o
 file4=plusone_5_23
 OBJ4=$(file4).o
 
-file5=addBinary_5_26
+file5=ListNode
 OBJ5=$(file5).o
 
 OBJ1=pivotsum.o

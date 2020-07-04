@@ -126,7 +126,61 @@ int* maxSlidingWindow(int* nums, int numsSize, int k, int* returnSize)
 		int  left=0;
 		int  rigth =0;
 		int  Min_index=0;
-		#if 1
+        // 找出第一个窗口里面的最大值
+		MaxValue[i] = nums[left];
+		while(rigth < numsSize && flag_k)
+		{
+				if(nums[rigth] >= MaxValue[i])
+				{
+						MaxValue[i] = nums[rigth];
+				}
+				rigth++;
+				flag_k--;
+		}
+		printf(" 0  MaxValue = %d  i= %d  \n",MaxValue[i],i);
+		//left + k
+		rigth = left+k; // 一个窗口的大小
+		while(left <(numsSize-k))
+		{
+			  // 如果下一个窗口的值 最右边的值 ， 大于 上一个的窗口的最大值
+				if(nums[rigth] >=MaxValue[i] )
+				{
+						i++;
+						MaxValue[i] = nums[rigth];
+						printf(" 1  MaxValue = %d  i= %d  \n",MaxValue[i],i);
+				}
+				else
+				{ 
+						// 如果上一个窗口的最大值 等于 最左边的值  ， 那么需要在这个新的窗口找 最大值
+						if(nums[left] ==  MaxValue[i] )
+						{
+								rigth = left+1;
+								flag_k= k-1;
+								i++;
+								MaxValue[i] =nums[rigth] ;
+								rigth++;
+								while(rigth < numsSize && flag_k)
+								{
+										if(nums[rigth] >= MaxValue[i])
+										{
+												MaxValue[i] = nums[rigth];
+										}
+										rigth++;
+										flag_k--;
+							   }
+								printf(" 2  MaxValue = %d  i= %d  \n",MaxValue[i],i);
+						}
+						else  // 如果上一个窗口的最大值 不是 最左边的值，那么 上一个窗口的最大值 就是 当前窗口的最大值
+						{
+								MaxValue[i+1] = MaxValue[i];
+								i++;
+								printf(" 3  MaxValue = %d  i= %d  \n",MaxValue[i],i);
+						}
+				}
+				left++;
+				rigth = left + k;
+		}
+		#if 0
 		while(left <(numsSize+1-k))
 		{ 
 				rigth = left+1;
