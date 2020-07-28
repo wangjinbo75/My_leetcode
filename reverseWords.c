@@ -4,6 +4,7 @@
 #include<ctype.h>
 //  string作为类型使用是 c++中的，c语言中没有。，使用前bai要#include <string>,C里面用du的是C风格的字符zhi串
 //  char * s1 = (char*) malloc(sizeof(char)* ); //不用malloc 开辟空间 太好了。
+// string.h  里面有拷贝复制东西strle我觉得可以了
 /*
 请选用 C 语言的用户尝试使用 O(1) 额外空间复杂度的原地解法。
 1. 检验空格的位置
@@ -14,9 +15,8 @@
             再设一个字符串，这样的话，是不是
         倒序就可以完成（交换即可,这个之后 还是个大问题）
 */
+
 char * reverseWords(char * s){
-    //char *s1 ;
-    
     //消除前面的空格
     while (*s == ' ')   { 
         s++; 
@@ -29,7 +29,7 @@ char * reverseWords(char * s){
         s[len] ='\0';
         len--;
     }
-    printf("s =%s0 strlen = %d\n",s,strlen(s));
+    //printf("去掉前后空格 s =%s0 strlen = %d\n",s,strlen(s));
    int flag =0;
    int j=0;
     //去掉多余空格
@@ -50,8 +50,11 @@ char * reverseWords(char * s){
         }
     }
     s[j] ='\0';
-    printf("s =%s0 strlen = %d\n",s,strlen(s));
-    //倒序
+   // printf("剔除多余空格  s =%s0 strlen = %d\n",s,strlen(s));
+    char s1[len];
+    memset(s1, '\0', sizeof(s1));
+    strcpy(s1,s);
+    //printf("复制 s1 =%s0 strlen = %d\n",s1,strlen(s1));
     char start =0;
     char end=strlen(s)-1;
     int  k=0;
@@ -60,33 +63,25 @@ char * reverseWords(char * s){
         if(s[i] ==' ')
         {
             start = i;
-            //交换
             while (start<end)
             {
-                char tmp=0;
-                tmp=s[k];
-                s[k++]=s[++start];
-                s[start]=tmp;
+                s1[k++]=s[++start];
             }
-            s[k++]=' ';
+            s1[k++]=' ';
             end=i;
             printf("end= %d\n",end);
         }
     }
-    printf("s2 =%s0 strlen = %d\n",s,strlen(s));
-    //倒序
+    //printf("倒序 s1=%s0 strlen = %d\n",s1,strlen(s1));
     start = 0;
     k--;
     while (start<end)
     {
-        char tmp=0;
-        tmp = s[k];
-        s[k++]=s[start];
-        s[start++]=tmp;
+        s1[k++]=s[start++];
     }
-    s[k]='\0';
-    printf("   return s2 =%s\n ",s);
-    //*s1 = '\0';
+    s1[k]='\0';
+    //printf("return s2 =%s0\n ",s1);
+    strcpy(s,s1);
 return s;
 }
 void reverse(char *s, int start, int end) {
@@ -136,6 +131,11 @@ char * reverseWords2(char * s){
     return s;
 }
 
+int strlen1(char *s) {
+    char *p = s;
+    while (*p != '\0') p++;
+    return p - s;
+}
 
 int main (void)
 {
@@ -145,6 +145,8 @@ int main (void)
    char * s1 = s0;
    char * s2=reverseWords(s1);
    printf("   return =%s\n ",s2); 
+    char a=strlen1(s0);
+    printf("a = %d",a);
 
   return 1;
 }
